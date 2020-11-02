@@ -45,8 +45,7 @@ public class SFS_RoomJoin : MonoBehaviour
         objOut.PutInt("userId",user.Id);
         objOut.PutInt("roomId",room.Id);
         for(int i=0;i<4;i++){
-            objOut.PutUtfString("card"+i.ToString(),deck[i]);
-            Debug.Log(deck[i]);
+            objOut.PutInt("card"+i.ToString(),Solitaire.UpdatePoint(deck[i].Substring(1,deck[i].Length-1)));
         }
         sfs.Send(new ExtensionRequest("OnJoinRoom",objOut));
     }

@@ -8,12 +8,12 @@ public class Solitaire : MonoBehaviour
     public Sprite[] cardFaces;
     public GameObject cardPrefab;
     public Transform BottomContainer;
-    private PointsUpdate pointsUpdate;
+    private static PointsUpdate pointsUpdate;
     
     public static string[] suits={"C","D","H","S"};
     public static string[] values={"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
     public static List<string> deck;
-    public IDictionary<string,int> alphaCardsValues=new Dictionary<string,int>(){
+    public static IDictionary<string,int> alphaCardsValues=new Dictionary<string,int>(){
         {"A",1},
         {"J",11},
         {"Q",12},
@@ -78,12 +78,15 @@ public class Solitaire : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
     }
-    void UpdatePoint(string name){
+    public static int UpdatePoint(string name){
         int value;
         if(int.TryParse(name,out value))
             pointsUpdate.points+=value;
-        else
+        else{
             pointsUpdate.points+=alphaCardsValues[name];
+            value=alphaCardsValues[name];
+        }
+        return value;
     }
 
     public void ToMainMenu(){
