@@ -41,7 +41,6 @@ public class UpdateSprite : MonoBehaviour
         }
     }
     void OnMouseDown(){
-        Debug.Log(this.name);
         selectable.faceUp=!selectable.faceUp;
     }
 }

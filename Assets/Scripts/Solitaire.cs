@@ -2,19 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
+
 public class Solitaire : MonoBehaviour
 {
     public Sprite[] cardFaces;
     public GameObject cardPrefab;
     public Transform BottomContainer;
+    private PointsUpdate pointsUpdate;
     
     public static string[] suits={"C","D","H","S"};
     public static string[] values={"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
     public List<string> deck;
+    public IDictionary<string,int> alphaCardsValues=new Dictionary<string,int>(){
+        {"A",1},
+        {"J",11},
+        {"Q",12},
+        {"K",13}
+        };
+
     // Start is called before the first frame update
     void Start()
     {
+        pointsUpdate=FindObjectOfType<PointsUpdate>();
         playCards();
     }
 
@@ -64,12 +73,21 @@ public class Solitaire : MonoBehaviour
         for(int i=0;i<5;i++){
             GameObject newCard= Instantiate(cardPrefab,new Vector3(BottomContainer.position.x+xOffset,BottomContainer.position.y,BottomContainer.position.z-zOffset),Quaternion.identity);
             newCard.name=deck[cards[i]];
+            UpdatePoint(deck[cards[i]].Substring(1,deck[cards[i]].Length-1));
             newCard.GetComponent<Selectable>().faceUp=true;
             xOffset+=0.30f;
             zOffset+=0.05f;
             yield return new WaitForSeconds(0.1f);
         }
     }
+    void UpdatePoint(string name){
+        int value;
+        if(int.TryParse(name,out value))
+            pointsUpdate.points+=value;
+        else
+            pointsUpdate.points+=alphaCardsValues[name];
+    }
+
     public void ToMainMenu(){
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.LoadScene(0);
