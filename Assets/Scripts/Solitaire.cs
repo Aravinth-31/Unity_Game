@@ -12,7 +12,7 @@ public class Solitaire : MonoBehaviour
     
     public static string[] suits={"C","D","H","S"};
     public static string[] values={"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
-    public List<string> deck;
+    public static List<string> deck;
     public IDictionary<string,int> alphaCardsValues=new Dictionary<string,int>(){
         {"A",1},
         {"J",11},
@@ -65,15 +65,13 @@ public class Solitaire : MonoBehaviour
         }
         return newDeck;
     }
-
     IEnumerator SolitaireDeal(){
-        int[] cards= new int[5]{39,34,25,42,31};
         float xOffset =0;
         float zOffset=0.03f;
-        for(int i=0;i<5;i++){
+        for(int i=0;i<4;i++){
             GameObject newCard= Instantiate(cardPrefab,new Vector3(BottomContainer.position.x+xOffset,BottomContainer.position.y,BottomContainer.position.z-zOffset),Quaternion.identity);
-            newCard.name=deck[cards[i]];
-            UpdatePoint(deck[cards[i]].Substring(1,deck[cards[i]].Length-1));
+            newCard.name=deck[i];
+            UpdatePoint(deck[i].Substring(1,deck[i].Length-1));
             newCard.GetComponent<Selectable>().faceUp=true;
             xOffset+=0.30f;
             zOffset+=0.05f;

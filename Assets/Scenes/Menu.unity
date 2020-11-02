@@ -2182,6 +2182,7 @@ GameObject:
   - component: {fileID: 1741151867}
   - component: {fileID: 1741151866}
   - component: {fileID: 1741151865}
+  - component: {fileID: 1741151868}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2254,6 +2255,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1741151868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741151864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa4d09a5fd6566649a04cbb328a8d54f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ServerIp: 127.0.0.1
+  ServerPort: 9933
+  ZoneName: BasicExamples
+  userName: NewUser
+  RoomName: New
+  roomPassword: 
 --- !u!1 &1742136358
 GameObject:
   m_ObjectHideFlags: 0
