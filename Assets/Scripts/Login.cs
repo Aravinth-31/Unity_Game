@@ -10,7 +10,7 @@ public class Login : MonoBehaviour
 {
     public GameObject username;
     private string Username;
-    public const string url="http.google.ca";
+    // public const string url="http.google.ca";
     // Start is called before the first frame update
     void Start()
     {

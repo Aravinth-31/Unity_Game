@@ -9,8 +9,8 @@ using Sfs2X.Entities.Data;
 
 public class SFS_RoomJoin : MonoBehaviour
 {
-    public string RoomName="New";
-    public string roomPassword="123";
+    public string RoomName="Rummy";
+    public string roomPassword="";
     SmartFox sfs;
 
     // Start is called before the first frame update

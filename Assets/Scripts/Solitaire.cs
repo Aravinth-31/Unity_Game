@@ -91,6 +91,6 @@ public class Solitaire : MonoBehaviour
 
     public void ToMainMenu(){
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }

@@ -10,6 +10,11 @@ public class MainMenu : MonoBehaviour
         // SceneManager.LoadScene(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    public void Wallet()
+    {
+        SceneManager.LoadScene("WalletMoney");
+        print("wallet section");
+    }
     public void QuitGame()
     {
         Application.Quit();
