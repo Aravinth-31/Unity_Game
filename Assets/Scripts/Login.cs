@@ -9,7 +9,9 @@ using UnityEngine.SceneManagement;
 public class Login : MonoBehaviour
 {
     public GameObject username;
+    public GameObject password;
     private string Username;
+    private string Password;
     // public const string url="http.google.ca";
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,7 @@ public class Login : MonoBehaviour
     }
     public void LoginButton(){
         print("Login Succesfull"+Username);
+        print("password-->>>"+Password);
         SceneManager.LoadScene("menu");
         // WWW request = new WWW(url);
         // StartCoroutine(OnResponse(request));
@@ -42,10 +45,11 @@ public class Login : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.Return)){
-            if(Username!=""){
+            if(Username!=""&&Password!=""){
                 LoginButton();
             }
         }
         Username =username.GetComponent<InputField>().text;
+        Password = password.GetComponent<InputField>().text;
     }
 }
