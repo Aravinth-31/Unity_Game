@@ -7,8 +7,9 @@ public class Solitaire : MonoBehaviour
 {
     public Sprite[] cardFaces;
     public GameObject cardPrefab;
-    public Transform BottomContainer;
+    public GameObject CardsContainer;
     private static PointsUpdate pointsUpdate;
+    public GameObject GameContainer;
     
     public static string[] suits={"C","D","H","S"};
     public static string[] values={"A","2","3","4","5","6","7","8","9","10","J","Q","K"};
@@ -24,6 +25,8 @@ public class Solitaire : MonoBehaviour
     void Start()
     {
         pointsUpdate=FindObjectOfType<PointsUpdate>();
+        CardsContainer=GameObject.Find("CardsContainer");
+        GameContainer=GameObject.Find("GameContainer");
         playCards();
     }
 
@@ -69,7 +72,8 @@ public class Solitaire : MonoBehaviour
         float xOffset =0;
         float zOffset=0.03f;
         for(int i=0;i<4;i++){
-            GameObject newCard= Instantiate(cardPrefab,new Vector3(BottomContainer.position.x+xOffset,BottomContainer.position.y,BottomContainer.position.z-zOffset),Quaternion.identity);
+            GameObject newCard= Instantiate(cardPrefab,new Vector3(CardsContainer.transform.position.x+xOffset,CardsContainer.transform.position.y,CardsContainer.transform.position.z-zOffset),Quaternion.identity);
+            newCard.transform.parent=GameContainer.transform;
             newCard.name=deck[i];
             UpdatePoint(deck[i].Substring(1,deck[i].Length-1));
             newCard.GetComponent<Selectable>().faceUp=true;
